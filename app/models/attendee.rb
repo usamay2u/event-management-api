@@ -1,0 +1,3 @@
+class Attendee < User
+
+end
