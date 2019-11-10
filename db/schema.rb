@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2019_11_10_180007) do
     t.string "last_name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "phone_number", default: "", null: false
+    t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
