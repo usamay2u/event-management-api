@@ -1,0 +1,23 @@
+body.bg-dark
+  .container
+    .card.card-login.mx-auto.mt-5
+      .card-header Login
+      .card-body
+        = form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: 'loginform' }) do |f|
+          .form-group
+            .form-label-group
+              = f.email_field :email, autocomplete: "email", id: 'inputEmail',
+                                      class: 'form-control', placeholder: "Email address",
+                                      required: "required"
+              label for="inputEmail"  Email address
+          .form-group
+            .form-label-group
+              = f.password_field :password, id: 'inputPassword', class: 'form-control',
+                                            placeholder: "Password", required: "required"
+              label for="inputPassword"  Password
+          .form-group
+            .checkbox
+              label
+                input type="checkbox" value="remember-me"
+                | Remember Password
+          = f.submit 'Login', class: 'btn btn-primary btn-block'
