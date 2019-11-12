@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       # routes
       post '/events/verify_event', to: "events#verify_event"
       get '/events/details/:id', to: "events#details"
+
+      post '/verify_user', to: 'users#verify_user'
     end
   end
 end
