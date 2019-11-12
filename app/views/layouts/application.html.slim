@@ -8,7 +8,6 @@ html
     link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css"
 
     script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"
-    script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.2/rails.min.js"
     script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"
@@ -18,8 +17,8 @@ html
     script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js'
     script src='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js'
 
-    = stylesheet_link_tag 'application'
-    = javascript_pack_tag 'application'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = csrf_meta_tags
     = favicon_link_tag asset_path('logo.png'), rel: 'icon', type: 'image/png'
   body#page-top.sidebar-toggled
