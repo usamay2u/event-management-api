@@ -1,0 +1,156 @@
+.dashboard-logo {
+  width: 40px;
+  margin-right: 2px;
+}
+
+.form-height {
+  height: 2em;
+}
+
+.notifications
+{
+  background: #ecf0f1;
+  border: 1px solid #bdc3c7;
+  &:after{
+    border: 10px solid transparent;
+    border-bottom-color: #3498db;
+    content: '';
+    display: block;
+    height: 0;
+    right: 2%;
+    position: absolute;
+    top: -20px;
+    width: 0;
+  }
+  #mark-all-read{
+    line-height: 0.9em;
+  }
+  .waiting-div{
+    padding: 10px;
+  }
+  #admin-alerts{
+    max-height: 500px;
+    overflow: scroll;
+  }
+  h3,
+  .show-all{
+    background: #3498db;
+    color: #fefefe;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+  }
+  h3{
+    cursor: default;
+    font-size: 1.05em;
+    font-weight: normal;
+  }
+  .show-all{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    &:hover,
+    &:focus{
+      text-decoration: underline;
+    }
+  }
+  .notifications-list{
+    min-width: 400px;
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+
+    .item{
+      border-top: 1px solid #bdc3c7;
+      color: #000000;
+      cursor: default;
+      display: block;
+      padding: 10px;
+      position: relative;
+      white-space: nowrap;
+      width: 100%;
+
+      &:before,
+      .details,
+      .button-dismiss{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      &:before{
+        border-radius:50%;
+        background: #3498db;
+        content: '';
+        height: 8px;
+        width: 8px;
+      }.details{
+        margin-left: 10px;
+        white-space: normal;
+        width: 350px;
+        .title,
+        .date{
+          display: block;
+        }
+        .message{
+          font-size: .95em;
+        }
+        .date{
+          color: #95a5a6;
+          font-size: .85em;
+          margin-top: 3px;
+        }
+      }
+      .button-dismiss{
+        color: #bdc3c7;
+        font-size: 1.25rem;
+        border: 0;
+        background: transparent;
+        &:hover,
+        &:focus
+        {
+          color: #95a5a6;
+        }
+      }
+      &.no-data{
+        text-align: center;
+        &:before
+        {
+          display: none;
+        }
+      }
+      &.expired{
+        color: #7f8c8d;
+        &:before{
+          background: #bdc3c7;
+        }
+        .details{
+          .date{
+            color: #bdc3c7;
+          }
+        }
+      }
+    }
+  }
+  &.empty{
+    .notifications-list{
+      .no-data{
+        display: block;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+.card-logo{
+  width: 60px;
+  height: 60px;
+}
+.margin-10{
+  margin-top: 10px;
+}.img-name{
+  display: flex;
+  img{
+    width: 25px;
+    height: 25px;
+  }
+}

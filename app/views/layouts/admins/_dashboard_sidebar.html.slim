@@ -1,0 +1,18 @@
+- if current_admin.present?
+  ul.sidebar.navbar-nav.toggled
+      li.nav-item class="#{request.path == root_path ? 'active' : ''}"
+        = link_to(root_path, class: 'nav-link') do
+          i.fas.fa-fw.fa-tachometer-alt &nbsp;
+          span Dashboard
+      li.nav-item class="#{request.path == root_path ? 'active' : ''}"
+        = link_to(root_path, class: 'nav-link') do
+          i.fas.fa-fw.fa-users &nbsp;
+          span Users
+      li.nav-item class="#{request.path == root_path ? 'active' : ''}"
+        = link_to(root_path, class: 'nav-link') do
+          i.fas.fa-fw.fa-calendar-alt &nbsp;
+          span Events
+      li.nav-item class="#{request.path == root_path ? 'active' : ''}"
+        = link_to(root_path, class: 'nav-link') do
+          i.fas.fa-fw.fa-users &nbsp;
+          span Sessions
