@@ -18,7 +18,18 @@ html
     script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js'
     script src='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js'
 
-    = stylesheet_pack_tag 'application'
+    = stylesheet_link_tag 'application'
     = javascript_pack_tag 'application'
-  body
-    = yield
+    = csrf_meta_tags
+    = favicon_link_tag asset_path('logo.png'), rel: 'icon', type: 'image/png'
+  body#page-top.sidebar-toggled
+    = render 'layouts/admins/dashboard_header'
+    #wrapper
+      = render 'layouts/admins/dashboard_sidebar'
+      = yield
+      footer.sticky-footer
+        .container.my-auto
+          .copyright.text-center.my-auto
+            span Copyright © Event Management 2019
+    a.scroll-to-top.rounded href="#page-top"
+      i.fas.fa-angle-up
