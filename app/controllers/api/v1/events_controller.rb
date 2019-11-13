@@ -12,6 +12,7 @@ class Api::V1::EventsController < Api::V1::BaseController
     render json: { event: build_event_object }, status: 200
   end
 
+	private
   def build_event_object
     event_array = []
     ongoing_session_array = []
@@ -26,7 +27,6 @@ class Api::V1::EventsController < Api::V1::BaseController
     event_array
   end
 
-	private
 	def set_event
 		@event = Event.find_by(code: params[:code])
 	end

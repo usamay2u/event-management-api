@@ -9,4 +9,8 @@ class User < ApplicationRecord
   scope :speakers, -> { where(type: 'Speaker') }
   scope :attendees, -> { where(type: 'Attendee') }
   scope :sponsors, -> { where(type: 'Sponsor') }
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end
