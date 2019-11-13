@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get '/events/details/:id', to: "events#details"
 
       post '/verify_user', to: 'users#verify_user'
+      post '/verify_token', to: 'users#verify_token'
     end
   end
 end
