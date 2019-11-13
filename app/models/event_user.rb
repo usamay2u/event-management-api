@@ -9,6 +9,10 @@ class EventUser < ApplicationRecord
     UserMailer.with(user: user, event: event, token: verification_code).verify_user_event.deliver_later
   end
 
+  def verified_user_with_event
+    self.update!(verified: true)
+  end
+
   private
 
   def gen_code
