@@ -4,4 +4,13 @@ class User < ApplicationRecord
   has_many :conferences, through: :conference_users
 
   validates :email, presence: true, uniqueness: true
+
+  scope :verified, -> { joins(:event_users).where("event_users.verified = true") }
+  scope :speakers, -> { where(type: 'Speaker') }
+  scope :attendees, -> { where(type: 'Attendee') }
+  scope :sponsors, -> { where(type: 'Sponsor') }
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end
