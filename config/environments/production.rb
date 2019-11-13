@@ -62,6 +62,16 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "event_management_api_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+   :address              => ENV['gmail_email'],
+   :port                 => 587,
+   :user_name            => ENV['gmail_username'],
+   :password             => ENV['gmail_password'],
+   :authentication       => "plain",
+  :enable_starttls_auto => true
+  }
 
   # config.action_mailer.delivery_method = :smtp
   # host = 'example.com' #replace with your own url
