@@ -5,8 +5,8 @@ class CreateConferences < ActiveRecord::Migration[6.0]
       t.string :description,  null: false, default: ''
       t.string :venue,        null: false, default: ''
       t.date :date
-      t.time :start_time
-      t.time :end_time
+      t.datetime :start_time
+      t.datetime :end_time
       t.references :event, foreign_key: true
 
       t.timestamps
