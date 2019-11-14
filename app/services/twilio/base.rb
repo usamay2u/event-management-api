@@ -1,7 +1,4 @@
-class Twilio::BASE
-  require 'rubygems'
-  require 'twilio-ruby'
-
+class Twilio::Base
   def send_message
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
