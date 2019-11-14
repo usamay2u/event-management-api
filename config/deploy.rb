@@ -1,5 +1,5 @@
 # Change these
-server 'your_server_ip', port: your_port_num, roles: [:web, :app, :db], primary: true
+server '167.71.43.55', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:usamay2u/event-management-api.git'
 set :application,     'event-management-api'
