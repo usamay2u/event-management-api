@@ -1,7 +1,13 @@
 class User < ApplicationRecord
   has_many :event_users
   has_many :events, through: :event_users
+
+  has_many :conference_users
   has_many :conferences, through: :conference_users
+
+  has_many :connects, foreign_key: :user_id
+  has_many :links, through: :connects, source: :link
+
   has_one_attached :avatar
 
   validates :email, presence: true, uniqueness: true

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
       post '/verify_user', to: 'users#verify_user'
       post '/verify_token', to: 'users#verify_token'
+      post '/connect_with_other', to: 'users#connect_with_other'
     end
   end
 end
