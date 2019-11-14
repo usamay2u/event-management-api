@@ -1,4 +1,4 @@
-class TWILIO::BASE
+class Twilio::BASE
   require 'rubygems'
   require 'twilio-ruby'
 
