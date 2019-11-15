@@ -2,7 +2,7 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   before_action :set_event_user, only: [:verify_user]
   before_action :set_link_users, only: [:connect_with_other]
-  before_action :set_user, only: [:log_out]
+  before_action :set_user, only: [:log_out, :get_links]
 
   def verify_user
     render json: { message: 'Could not find user in our system.' }, status: 404 and return unless @event_user.present?
@@ -20,9 +20,19 @@ class Api::V1::UsersController < Api::V1::BaseController
     end
   end
 
+  def get_links
+    render json: { message: 'User not found.'}, status: 404 and return unless @user.present?
+    render json: { users:  @user.links, message: 'Success'}, status: 200 and return
+  end
+
   def connect_with_other
-    render json: { message: 'Users are not from same event.'}, status: 404 and return unless @verify_link.present?
-    @user.connects.create!(link_id: @link_user.id, qr_info: params[:qr_info], state: 1)
+    verify_link = nil
+    qr_code     = Regexp.quote(params[:qr_code]).split('\\')[0]
+    link_user   = User.find_by(qr_code: qr_code)
+    user_event  = @user.event_users.where(verified: true).first rescue nil
+    verify_link = link_user.events.ids.include?(user_event.event_id) if user_event.present? && link_user.present?
+    render json: { message: 'This user is not in our system for this event'}, status: 404 and return unless verify_link.present?
+    @user.connects.create!(link_id: link_user.id, qr_info: params[:qr_info], state: 1)
     render json: { links: @user.links, message: 'Success'}, status: 200 and return
   end
 
@@ -42,13 +52,10 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def set_link_users
     @user        = User.find_by_id(params[:user_id])
-    @link_user   = User.find_by(qr_code: params[:qr_code])
-    user_event   = @user.event_users.where(verified: true).first rescue nil
-    @verify_link = @link_user.events.ids.include?(user_event.event_id) if user_event.present?
   end
 
   def set_user
-    @user = User.find_by_id(params[:user_id])
+    @user = User.find_by_id(params[:id])
   end
 
 end
