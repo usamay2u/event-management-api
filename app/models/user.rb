@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates :email, presence: true, uniqueness: true
-  validates :company_name, :designation, presence: true
+  validates :company_name, :designation, :qr_code, presence: true
 
   scope :verified, -> { joins(:event_users).where("event_users.verified = true") }
   scope :speakers, -> { where(type: 'Speaker') }
