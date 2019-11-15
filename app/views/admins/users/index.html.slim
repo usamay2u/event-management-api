@@ -1,0 +1,16 @@
+#content-wrapper
+  .container-fluid
+    ol.breadcrumb
+      li.breadcrumb-item
+        a href="#"  Users
+      li.breadcrumb-item.active Overview
+    .card.mb-3
+      .card-header.text-white.bg-dark
+        .row
+          .col-10
+            i.fas.fa-table
+            | &nbsp Users
+          .col-2
+            = link_to 'Add New User', new_admins_user_path, class: 'btn btn-primary float-right'
+      .card-body
+        = render partial: 'users_detail'

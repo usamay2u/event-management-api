@@ -1,0 +1,26 @@
+.table-responsive
+  table#users-table.table.table-bordered cellspacing="0" width="100%"
+    thead
+      tr
+        th First Name
+        th Last Name
+        th Email
+        th Type
+        th Created At
+        th Action
+    tbody
+      - @users.find_each do |user|
+        tr
+          td
+            = user.first_name
+          td
+            = user.last_name
+          td
+            = user.email
+          td
+            = user.type
+          td
+            = user.created_at
+          td
+            = link_to 'Edit', edit_admins_user_path(user.id), class: 'btn btn-info mr-2'
+            = link_to 'Delete', admins_user_path(user.id), class: 'btn btn-danger'
