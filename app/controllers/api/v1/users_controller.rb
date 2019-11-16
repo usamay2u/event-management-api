@@ -1,8 +1,6 @@
 class Api::V1::UsersController < Api::V1::BaseController
-
   before_action :set_event_user, only: [:verify_user]
-  before_action :set_link_users, only: [:connect_with_other]
-  before_action :set_user, only: [:log_out, :get_links]
+  before_action :set_user, only: [:log_out, :get_links, :connect_with_other]
 
   def verify_user
     render json: { message: 'Could not find user in our system.' }, status: 404 and return unless @event_user.present?
@@ -52,12 +50,9 @@ class Api::V1::UsersController < Api::V1::BaseController
     @event_user = EventUser.where(user_id: user.id, event_id: event.id).first rescue nil
   end
 
-  def set_link_users
-    @user        = User.find_by_id(params[:user_id])
-  end
-
   def set_user
-    @user = User.find_by_id(params[:id])
+    id    = params[:id] || params[:user_id]
+    @user = User.find_by_id(id)
   end
 
 end

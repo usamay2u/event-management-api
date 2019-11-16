@@ -12,6 +12,11 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :company_name, :designation, :qr_code, presence: true
+  validates_format_of :phone_number, with: /\d[0-9]\)*\z/ , message: "phone number is not vailid", allow_nil: true
+
+  # validates :bio, length: { maximum: 200 }
+  validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+             size: { less_than: 1.megabytes , message: 'Image Should be less than 1 mb' }
 
   scope :verified, -> { joins(:event_users).where("event_users.verified = true") }
   scope :speakers, -> { where(type: 'Speaker') }

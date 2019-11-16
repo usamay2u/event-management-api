@@ -20,6 +20,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 gem 'devise', '~>4.7.1'
 gem 'sidekiq', '~> 5.2.3'
+gem 'active_storage_validations'
+gem 'bootstrap-form'
+gem 'image_processing', '~> 1.2'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

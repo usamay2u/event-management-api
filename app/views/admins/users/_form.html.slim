@@ -1,0 +1,36 @@
+.row
+  .col-md-6
+    .form-group
+      = f.text_field :first_name, autofocus: true, placeholder:  "First Name", required: true, minlength: 2,
+                    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+  .col-md-6
+    .form-group
+      = f.text_field :last_name, autofocus: true, placeholder: "Last Name", required: true, minlength: 2,
+                   class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.form-group
+  = f.email_field :email, autofocus: true, placeholder:  "Email", required: true, email: true,
+                  class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.form-group
+  = f.telephone_field :phone_number, autofocus: true, placeholder:  "Phone Number", required: true,
+                  class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.row
+  .col-md-4
+    .form-group
+      = f.text_field :qr_code, autofocus: true, placeholder:  "QR Code", required: true, minlength: 2,
+                    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+  .col-md-4
+    .form-group
+      = f.text_field :company_name, autofocus: true, placeholder: "Company Name", required: true, minlength: 2,
+                   class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+  .col-md-4
+    .form-group
+      = f.text_field :designation, autofocus: true, placeholder: "Designation", required: true, minlength: 2,
+                   class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.form-group
+  = f.select :type, ['Attendee', 'Sponsor', 'Speaker'],{ prompt: 'select Type'},{ autofocus: 'true', required: true,
+    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'}
+.form-group
+  = f.file_field :avatar
+
+.form-group.my-6
+  = f.submit  'Submit', class: 'btn btn-primary float-right'
