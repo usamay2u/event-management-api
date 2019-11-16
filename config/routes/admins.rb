@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users
     resources :events
+    resources :conferences
   end
 end

@@ -27,7 +27,7 @@
       = f.text_field :designation, autofocus: true, placeholder: "Designation", required: true,
                    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
 .form-group
-  = f.select :type, ['Attendee', 'Sponsor', 'Speaker'],{ prompt: 'select Type'},{ autofocus: 'true', required: true,
+  = f.select :type, ['Attendee', 'Sponsor', 'Speaker'],{ prompt: 'Select Type'},{ autofocus: 'true', required: true,
     class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'}
 .form-group
   = f.file_field :avatar

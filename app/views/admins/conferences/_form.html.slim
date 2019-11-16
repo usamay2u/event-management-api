@@ -1,0 +1,32 @@
+.row
+  .col-md-6
+    .form-group
+      = f.text_field :name, autofocus: true, placeholder:  "Name", required: true,
+                    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+  .col-md-6
+    .form-group
+      = f.date_field :date, autofocus: true, placeholder: "Date", required: true,
+                   class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.form-group
+  = f.text_area :description, min: 6, placeholder:  "Description", required: true,
+                  class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.form-group
+  = f.text_field :venue, autofocus: true, placeholder:  "Venue", required: true,
+                  class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.row
+  .col-md-6
+    .form-group
+      = f.time_field :start_time, value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss', required: true,
+                     class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+  .col-md-6
+    .form-group
+      = f.time_field :end_time, value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss', required: true,
+                   class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.form-group
+  = f.select :event_id, Event.all.collect {|m| [m.name, m.id]},{ prompt: 'Select Event'},{ autofocus: 'true', required: true,
+    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'}
+.form-group
+  = f.file_field :cover_photo
+
+.form-group.my-6
+  = f.submit  'Submit', class: 'btn btn-primary float-right'

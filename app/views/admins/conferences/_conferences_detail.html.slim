@@ -1,0 +1,26 @@
+.table-responsive
+  table#conferences-table.table.table-bordered.common_datatable cellspacing="0" width="100%"
+    thead
+      tr
+        th Name
+        th Venue
+        th Date
+        th Started At
+        th Ended At
+        th Action
+    tbody
+      - @conferences.find_each do |conference|
+        tr
+          td
+            = conference.name
+          td
+            = conference.venue
+          td
+            = display_date(conference.date)
+          td
+            = display_date_time(conference.start_time)
+          td
+            = display_date_time(conference.end_time)
+          td
+            = link_to 'Edit', edit_admins_conference_path(conference.id), class: 'btn btn-info mr-2'
+            = link_to 'Delete', admins_conference_path(conference.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
