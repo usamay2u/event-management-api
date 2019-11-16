@@ -29,7 +29,7 @@ spk8 = Speaker.where(email: 'bandar@gmail.com').first_or_create!(first_name: 'Mi
 
 e1 = Event.where(code: 'evn1').first_or_create!(name: 'first event', code: 'env1', description: 'event 1 description', venue: 'NY Plaza', start_date: Date.today + 1, end_date: Date.today + 2)
 e2 = Event.where(code: 'evn2').first_or_create!(name: 'first event', code: 'env2', description: 'event 2 description', venue: 'NY Plaza', start_date: Date.today + 2, end_date: Date.today + 2)
-e3 = Event.where(code: 'evnFactSh0').first_or_create!(name: 'Future Factory Show', description: 'Future Technology', venue: 'Prince Sultan Grand Hall, Al Faisaliah Hotel, Riyadh - KSA', start_date: Date.today + 2, end_date: Date.today + 2)
+e3 = Event.where(code: 'evnFactSh0').first_or_create!(name: 'Future Factory Show', code: 'evnFactSh0' description: 'Future Technology', venue: 'Prince Sultan Grand Hall, Al Faisaliah Hotel, Riyadh - KSA', start_date: Date.today + 2, end_date: Date.today + 2)
 
 # assign some attendees, sponsors and speakers to events.
 EventUser.where(verification_code: 'spk3toe3').first_or_create!(verification_code: 'spk3toe3', verified: 'true', user_id: spk3.id, event_id: e3.id)
