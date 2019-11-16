@@ -1,0 +1,26 @@
+.table-responsive
+  table#events-table.table.table-bordered.common_datatable cellspacing="0" width="100%"
+    thead
+      tr
+        th Name
+        th Code
+        th Venue
+        th Started At
+        th Ending At
+        th Action
+    tbody
+      - @events.find_each do |event|
+        tr
+          td
+            = event.name
+          td
+            = event.code
+          td
+            = event.venue
+          td
+            = display_date(event.start_date)
+          td
+            = display_date(event.end_date)
+          td
+            = link_to 'Edit', edit_admins_event_path(event.id), class: 'btn btn-info mr-2'
+            = link_to 'Delete', admins_event_path(event.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

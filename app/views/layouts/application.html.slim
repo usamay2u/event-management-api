@@ -25,9 +25,9 @@ html
     = render 'layouts/admins/dashboard_header'
     #wrapper
       = render 'layouts/admins/dashboard_sidebar'
+      = yield
       .py-4
         = render partial: '/layouts/partials/alerts', flash: flash
-      = yield
       footer.sticky-footer
         .container.my-auto
           .copyright.text-center.my-auto

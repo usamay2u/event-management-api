@@ -16,15 +16,15 @@
 .row
   .col-md-4
     .form-group
-      = f.text_field :qr_code, autofocus: true, placeholder:  "QR Code", required: true, minlength: 2,
+      = f.text_field :qr_code, autofocus: true, placeholder:  "QR Code", required: true,
                     class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
   .col-md-4
     .form-group
-      = f.text_field :company_name, autofocus: true, placeholder: "Company Name", required: true, minlength: 2,
+      = f.text_field :company_name, autofocus: true, placeholder: "Company Name", required: true,
                    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
   .col-md-4
     .form-group
-      = f.text_field :designation, autofocus: true, placeholder: "Designation", required: true, minlength: 2,
+      = f.text_field :designation, autofocus: true, placeholder: "Designation", required: true,
                    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
 .form-group
   = f.select :type, ['Attendee', 'Sponsor', 'Speaker'],{ prompt: 'select Type'},{ autofocus: 'true', required: true,

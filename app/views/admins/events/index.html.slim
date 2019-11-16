@@ -1,0 +1,16 @@
+#content-wrapper
+  .container-fluid
+    ol.breadcrumb
+      li.breadcrumb-item
+        a href="#"  Events
+      li.breadcrumb-item.active Overview
+    .card.mb-3
+      .card-header.text-white.bg-dark
+        .row
+          .col-10
+            i.fas.fa-table
+            | &nbsp Events
+          .col-2
+            = link_to 'Add New Event', new_admins_event_path, class: 'btn btn-primary float-right'
+      .card-body
+        = render partial: 'events_detail'
