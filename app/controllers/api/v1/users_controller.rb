@@ -10,6 +10,7 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def verify_token
     @event_user = EventUser.find_by_id(params[:id])
+    @event_user.verified_user_with_event
     render json: { user:  @event_user.user, message: 'Success'}, status: 200 and return
     # if @event_user.present? && @event_user.verification_code == params[:token]
     if @event_user.present?
