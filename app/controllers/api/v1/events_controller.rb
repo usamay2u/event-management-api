@@ -22,7 +22,7 @@ class Api::V1::EventsController < Api::V1::BaseController
       upcoming_session_array << conference if DateTime.now < conference.start_time
     end
 
-    event_array << { event: @event, user: @user, sessions: @event.conferences, ongoing_session: ongoing_session_array,
+    event_array << { event: @event, user_type: @user.type, user: @user, sessions: @event.conferences, ongoing_session: ongoing_session_array,
                      upcoming_session: upcoming_session_array, sponsors: @event.users.sponsors,
                      speakers: @event.users.speakers, attendees: @event.users.attendees }
     event_array
