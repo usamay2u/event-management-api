@@ -21,6 +21,13 @@ class Api::V1::EventsController < Api::V1::BaseController
       ongoing_session_array << conference if DateTime.now.between?(conference.start_time, conference.end_time)
       upcoming_session_array << conference if DateTime.now < conference.start_time
     end
+
+    @event.users.each do |user|
+      if user.avatar.attached?
+        user.avatar = user.avatar.variant(combine_options: { resize:"#{size}x#{size}!", extent: "#{size}x#{size}", gravity: "center"})
+      end
+    end
+
     event_array << { event: @event, user: @user, sessions: @event.conferences, ongoing_session: ongoing_session_array,
                      upcoming_session: upcoming_session_array, sponsors: @event.users.sponsors,
                      speakers: @event.users.speakers, attendees: @event.users.attendees }
