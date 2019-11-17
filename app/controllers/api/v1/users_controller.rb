@@ -1,6 +1,6 @@
 class Api::V1::UsersController < Api::V1::BaseController
   before_action :set_event_user, only: [:verify_user]
-  before_action :set_user, only: [:log_out, :get_links, :connect_with_other]
+  before_action :set_user, only: [:log_out, :get_links, :connect_with_other, :get_conferences]
 
   def verify_user
     render json: { message: 'Could not find user in our system.' }, status: 404 and return unless @event_user.present?
@@ -41,6 +41,14 @@ class Api::V1::UsersController < Api::V1::BaseController
     render json: { message: 'User not found.'}, status: 404 and return unless @user.present?
     @user.event_users.update_all(verified: false)
     render json: { message: 'Success'}, status: 200 and return
+  end
+
+  def get_conferences
+    conferences = []
+    @user.conference_users.find_each do |conference_user|
+      conferences << conference_user.conference
+    end
+    render json: { sessions: conferences}, status: 200 and return
   end
 
   private

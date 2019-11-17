@@ -31,6 +31,9 @@ e1 = Event.where(code: 'evn1').first_or_create!(name: 'first event', code: 'env1
 e2 = Event.where(code: 'evn2').first_or_create!(name: 'first event', code: 'env2', description: 'event 2 description', venue: 'NY Plaza', start_date: Date.today + 2, end_date: Date.today + 2)
 e3 = Event.where(code: 'evnFactSh0').first_or_create!(name: 'Future Factory Show', code: 'evnFactSh0' description: 'Future Technology', venue: 'Prince Sultan Grand Hall, Al Faisaliah Hotel, Riyadh - KSA', start_date: Date.today + 2, end_date: Date.today + 2)
 
+spo9 = Sponsor.where(email: 'sponsor9@gmail.com').first_or_create!(first_name: 'ABB', last_name: '', email: 'sponsor9@gmail.com', company_name: 'Platinum Sponsor', designation: 'Business', qr_code: 'B100112', profile_avatar: '../assets/img/ABB-page-001.jpg')
+spo10 = Sponsor.where(email: 'sponsor10@gmail.com').first_or_create!(first_name: 'Sponsor', last_name: 'spo2', email: 'sponsor10@gmail.com', company_name: 'Company uk', designation: 'OB', qr_code: 'B100d112')
+EventUser.where(verification_code: 'spk10toe10').first_or_create!(verification_code: 'spk10toe10', verified: 'true', user_id: spk2.id, event_id: 5)
 # assign some attendees, sponsors and speakers to events.
 EventUser.where(verification_code: 'spk3toe3').first_or_create!(verification_code: 'spk3toe3', verified: 'true', user_id: spk3.id, event_id: e3.id)
 EventUser.where(verification_code: 'spk4toe3').first_or_create!(verification_code: 'spk4toe3', verified: 'true', user_id: spk4.id, event_id: e3.id)
@@ -149,3 +152,4 @@ ConferenceUser.where(conference_id: c9.id, user_id: spk5.id).first_or_create!
 ConferenceUser.where(conference_id: c9.id, user_id: spk6.id).first_or_create!
 ConferenceUser.where(conference_id: c9.id, user_id: spk7.id).first_or_create!
 ConferenceUser.where(conference_id: c9.id, user_id: spk8.id).first_or_create!
+ConferenceUser.where(conference_id: c9.id, user_id: spo10.id).first_or_create!

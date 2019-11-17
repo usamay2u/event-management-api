@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post '/connect_with_other', to: 'users#connect_with_other'
       get '/logout/:id', to: 'users#log_out'
       get '/get_links/:id', to: 'users#get_links'
+      get '/get_conferences/:id', to: 'users#get_conferences'
     end
   end
 end
