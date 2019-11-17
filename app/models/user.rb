@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates :email, presence: true, uniqueness: true
-  validates :company_name, :designation, :qr_code, presence: true
+  validates :company_name, :designation, presence: true
   # validates_format_of :phone_number, with: /\d[0-9]\)*\z/ , message: "phone number is not vailid", allow_nil: true
 
   validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
