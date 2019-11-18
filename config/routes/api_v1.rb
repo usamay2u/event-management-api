@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get '/logout/:id', to: 'users#log_out'
       get '/get_links/:id', to: 'users#get_links'
       get '/get_conferences/:id', to: 'users#get_conferences'
+      get '/get_speakers/:id', to: 'users#get_speakers'
     end
   end
 end

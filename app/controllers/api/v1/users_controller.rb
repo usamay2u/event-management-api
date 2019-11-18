@@ -1,6 +1,7 @@
 class Api::V1::UsersController < Api::V1::BaseController
   before_action :set_event_user, only: [:verify_user]
   before_action :set_user, only: [:log_out, :get_links, :connect_with_other, :get_conferences]
+  before_action :set_conference, only: [:get_speakers]
 
   def verify_user
     render json: { message: 'Could not find user in our system.' }, status: 404 and return unless @event_user.present?
@@ -51,6 +52,12 @@ class Api::V1::UsersController < Api::V1::BaseController
     render json: { sessions: conferences}, status: 200 and return
   end
 
+  def get_speakers
+    speakers = []
+    speakers = @conference.users.speakers
+    render json: { speakers: speakers}, status: 200 and return
+  end
+
   private
 
   def set_event_user
@@ -62,6 +69,11 @@ class Api::V1::UsersController < Api::V1::BaseController
   def set_user
     id    = params[:id] || params[:user_id]
     @user = User.find_by_id(id)
+  end
+
+  def set_conference
+    id    = params[:id] || params[:user_id]
+    @conference = Conference.find_by_id(id)
   end
 
 end
