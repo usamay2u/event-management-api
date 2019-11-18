@@ -18,8 +18,8 @@ class Api::V1::EventsController < Api::V1::BaseController
     ongoing_session_array = []
     upcoming_session_array = []
     @event.conferences.each do |conference|
-      ongoing_session_array << conference if DateTime.now.between?(conference.start_time, conference.end_time)
-      upcoming_session_array << conference if DateTime.now < conference.start_time
+      ongoing_session_array << conference if DateTime.now.utc.strftime( "%H%M%S%N" ).between?(conference.start_time.utc.strftime( "%H%M%S%N" ), conference.end_time.utc.strftime( "%H%M%S%N" ))
+      upcoming_session_array << conference if DateTime.now.utc.strftime( "%H%M%S%N" ) < conference.start_time.utc.strftime( "%H%M%S%N" )
     end
 
     event_array << { event: @event, user_type: @user.type, user: @user, sessions: @event.conferences, ongoing_session: ongoing_session_array,
