@@ -1,15 +1,15 @@
 {
-  "application.js": "/packs/js/application-97e9968fb80209edb8c2.js",
-  "application.js.map": "/packs/js/application-97e9968fb80209edb8c2.js.map",
+  "application.js": "/packs/js/application-3c8406cdaa76afc1abfc.js",
+  "application.js.map": "/packs/js/application-3c8406cdaa76afc1abfc.js.map",
   "datatable.js": "/packs/js/datatable-46d08b61377cb6607fea.js",
   "datatable.js.map": "/packs/js/datatable-46d08b61377cb6607fea.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-97e9968fb80209edb8c2.js"
+        "/packs/js/application-3c8406cdaa76afc1abfc.js"
       ],
       "js.map": [
-        "/packs/js/application-97e9968fb80209edb8c2.js.map"
+        "/packs/js/application-3c8406cdaa76afc1abfc.js.map"
       ]
     },
     "datatable": {
@@ -19,6 +19,16 @@
       "js.map": [
         "/packs/js/datatable-46d08b61377cb6607fea.js.map"
       ]
+    },
+    "nested_form": {
+      "js": [
+        "/packs/js/nested_form-e3a7638b057f5f050a20.js"
+      ],
+      "js.map": [
+        "/packs/js/nested_form-e3a7638b057f5f050a20.js.map"
+      ]
     }
-  }
+  },
+  "nested_form.js": "/packs/js/nested_form-e3a7638b057f5f050a20.js",
+  "nested_form.js.map": "/packs/js/nested_form-e3a7638b057f5f050a20.js.map"
 }

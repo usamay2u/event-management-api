@@ -7,3 +7,4 @@
       .col-12
         = form_for @event, url: admins_event_path(@event.id), html: {class: 'custom-form-input'} do |f|
           = render partial: 'form', locals: {f: f}
+    = link_to 'Back', admins_events_path

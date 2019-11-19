@@ -7,7 +7,8 @@ class Admins::UsersController < ::ApplicationController
   end
 
   def new
-    @user = User.new
+    @user        = User.new
+    @user_events = @user.event_users.new
   end
 
   def create
@@ -21,6 +22,7 @@ class Admins::UsersController < ::ApplicationController
   end
 
   def edit
+    @user_events = @user.event_users
   end
 
   def update
@@ -37,17 +39,21 @@ class Admins::UsersController < ::ApplicationController
   end
 
   def destroy
-    if @user.destroy
+    begin
+      @user.destroy
       flash[:danger] = 'User successfully deleted!'
+    rescue => e
+      flash[:danger] = e.to_s
     end
     redirect_to admins_users_path
   end
 
   private
     def user_params
-      user =  @user.class.name.downcase.to_sym
+      user =  @user.present? ? @user.class.name.downcase.to_sym : :user
       params.require(user).permit(:first_name, :last_name, :email, :phone_number, :qr_code, :type,
-                                   :avatar, :designation, :company_name)
+                                   :avatar, :designation, :company_name,
+                                   event_users_attributes: [:id, :event_id, :_destroy])
     end
 
     def set_user

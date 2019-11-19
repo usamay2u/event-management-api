@@ -23,6 +23,7 @@ gem 'sidekiq', '~> 5.2.3'
 gem 'active_storage_validations'
 gem 'bootstrap-form'
 gem 'image_processing', '~> 1.2'
+gem "nested_form"
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

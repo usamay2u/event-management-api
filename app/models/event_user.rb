@@ -3,6 +3,7 @@ class EventUser < ApplicationRecord
   belongs_to :event
 
   # validates :verification_code, uniqueness: true
+  validates_uniqueness_of :user_id, scope: :event_id
 
   def generate_token_and_send_email
     self.update!(verification_code: gen_code)
