@@ -1,23 +1,23 @@
 {
-  "application.js": "/packs/js/application-3c8406cdaa76afc1abfc.js",
-  "application.js.map": "/packs/js/application-3c8406cdaa76afc1abfc.js.map",
-  "datatable.js": "/packs/js/datatable-46d08b61377cb6607fea.js",
-  "datatable.js.map": "/packs/js/datatable-46d08b61377cb6607fea.js.map",
+  "application.js": "/packs/js/application-9d8ee0b2aa312257ae21.js",
+  "application.js.map": "/packs/js/application-9d8ee0b2aa312257ae21.js.map",
+  "datatable.js": "/packs/js/datatable-444bc231da50d0953137.js",
+  "datatable.js.map": "/packs/js/datatable-444bc231da50d0953137.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-3c8406cdaa76afc1abfc.js"
+        "/packs/js/application-9d8ee0b2aa312257ae21.js"
       ],
       "js.map": [
-        "/packs/js/application-3c8406cdaa76afc1abfc.js.map"
+        "/packs/js/application-9d8ee0b2aa312257ae21.js.map"
       ]
     },
     "datatable": {
       "js": [
-        "/packs/js/datatable-46d08b61377cb6607fea.js"
+        "/packs/js/datatable-444bc231da50d0953137.js"
       ],
       "js.map": [
-        "/packs/js/datatable-46d08b61377cb6607fea.js.map"
+        "/packs/js/datatable-444bc231da50d0953137.js.map"
       ]
     },
     "nested_form": {
