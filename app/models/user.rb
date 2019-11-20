@@ -8,6 +8,10 @@ class User < ApplicationRecord
   has_many :connects, foreign_key: :user_id
   has_many :links, through: :connects, source: :link
 
+  has_many :user_conversations, dependent: :destroy
+  has_many :conversations, through: :user_conversations
+  has_many :messages, dependent: :destroy
+
   has_one_attached :avatar
 
   accepts_nested_attributes_for :event_users, allow_destroy: true, reject_if: :all_blank

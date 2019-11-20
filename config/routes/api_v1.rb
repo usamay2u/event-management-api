@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' }, constraints: { format: 'json' } do
     namespace :v1 do
+      mount ActionCable.server => '/cable'
 
       # routes
       post '/events/verify_event', to: "events#verify_event"
@@ -13,6 +14,9 @@ Rails.application.routes.draw do
       get '/get_links/:id', to: 'users#get_links'
       get '/get_conferences/:id', to: 'users#get_conferences'
       get '/get_speakers/:id', to: 'users#get_speakers'
+
+      resources :conversations, only: [:index, :create, :destroy, :show]
+      resources :messages, only: [:create]
     end
   end
 end
