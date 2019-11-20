@@ -1,3 +1,4 @@
 class ApplicationController < ActionController::Base
-    protect_from_forgery
+  include Rails.application.routes.url_helpers
+  protect_from_forgery
 end
