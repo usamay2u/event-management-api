@@ -1,0 +1,28 @@
+#content-wrapper
+  .container-fluid
+    ol.breadcrumb
+      li.breadcrumb-item
+        = link_to 'Event', admins_event_path(@event.id)
+      li.breadcrumb-item.active Overview
+    = render partial: 'specific_event', locals: {event: @event}
+
+    .card.mb-3
+      .card-body
+        ul#myTab.nav.nav-tabs role="tablist"
+          li.nav-item
+            a#conferences-tab.nav-link.active aria-controls="conferences" aria-selected="true" data-toggle="tab" href="#conferences" role="tab"  Conferences
+          li.nav-item
+            a#sponsor-tab.nav-link aria-controls="sponsor" aria-selected="false" data-toggle="tab" href="#sponsor" role="tab"  Sponsor
+          li.nav-item
+            a#speaker-tab.nav-link aria-controls="speaker" aria-selected="false" data-toggle="tab" href="#speaker" role="tab"  Speaker
+          li.nav-item
+            a#attendee-tab.nav-link aria-controls="attendee" aria-selected="false" data-toggle="tab" href="#attendee" role="tab"  Attendee
+        #myTabContent.tab-content.mt-3
+          #conferences.tab-pane.fade.show.active aria-labelledby="conferences-tab" role="tabpanel"
+            = render partial: 'admins/conferences/conferences_detail', locals: {conferences: @conferences}
+          #sponsor.tab-pane.fade aria-labelledby="sponsor-tab" role="tabpanel"
+            = render partial: 'admins/users/users_detail', locals: {users: @users.sponsors}
+          #speaker.tab-pane.fade aria-labelledby="speaker-tab" role="tabpanel"
+            = render partial: 'admins/users/users_detail', locals: {users: @users.speakers}
+          #attendee.tab-pane.fade aria-labelledby="attendee-tab" role="tabpanel"
+            = render partial: 'admins/users/users_detail', locals: {users: @users.attendees}

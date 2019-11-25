@@ -42,7 +42,7 @@ module ApplicationHelper
 
   def display_date date
     if date.present?
-      date.try(:strftime, "%m/%d/%Y") rescue 'N/A'
+      date.try(:strftime, "%d %B, %Y") rescue 'N/A'
     else
       ''
     end
@@ -50,7 +50,7 @@ module ApplicationHelper
 
   def display_date_time date
     if date.present?
-      date.try(:strftime, "%m/%d/%Y %H:%M:%S") rescue 'N/A'
+      date.try(:strftime, "%d %B, %Y %H:%M:%S") rescue 'N/A'
     else
       ''
     end
