@@ -18,16 +18,16 @@ class Api::V1::EventsController < Api::V1::BaseController
     ongoing_session_array = []
     upcoming_session_array = []
     @event.conferences.each do |conference|
-      conference.cover_photo = 'http://167.71.43.55'+rails_blob_path(conference.cover_photo, only_path: true)
+      conference.cover_photo = 'http://167.71.43.55'+rails_blob_path(conference.cover_photo, only_path: true) if conference.cover_photo.attached?
       ongoing_session_array << conference if DateTime.now.utc.strftime( "%H%M%S%N" ).between?(conference.start_time.utc.strftime( "%H%M%S%N" ), conference.end_time.utc.strftime( "%H%M%S%N" ))
       upcoming_session_array << conference if DateTime.now.utc.strftime( "%H%M%S%N" ) < conference.start_time.utc.strftime( "%H%M%S%N" )
     end
 
-    @event.cover_photo = 'http://167.71.43.55'+Rails.application.routes.url_helpers.rails_blob_path(@event.cover_photo, only_path: true)
-    @user.avatar = 'http://167.71.43.55'+Rails.application.routes.url_helpers.rails_blob_path(@user.cover_photo, only_path: true)
+    @event.cover_photo = 'http://167.71.43.55'+Rails.application.routes.url_helpers.rails_blob_path(@event.cover_photo, only_path: true) if @event.cover_photo.attached?
+    @user.avatar = 'http://167.71.43.55'+Rails.application.routes.url_helpers.rails_blob_path(@user.avatar, only_path: true) if @user.avatar.attached?
 
     @event.users.find_each do |user|
-      user.avatar = 'http://167.71.43.55'+Rails.application.routes.url_helpers.rails_blob_path(user.cover_photo, only_path: true)
+      user.avatar = 'http://167.71.43.55'+Rails.application.routes.url_helpers.rails_blob_path(user.avatar, only_path: true) if user.avatar.attached?
     end
 
     event_array << { event: @event, user_type: @user.type, user: @user, sessions: @event.conferences, ongoing_session: ongoing_session_array,

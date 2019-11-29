@@ -24,12 +24,10 @@ gem 'active_storage_validations'
 gem 'bootstrap-form'
 gem 'image_processing', '~> 1.2'
 gem "nested_form"
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
+gem 'rack-cors'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -1,10 +1,12 @@
 class Api::V1::MessagesController < Api::V1::BaseController
 
   def create
-    message      = Message.new
-    conversation = Conversation.find(message_params[:conversation_id])
+    message      = Message.new()
+    conversation = Conversation.find(params[:conversation_id])
+    message.content         = params[:content]
+    message.conversation_id = params[:conversation_id]
+    message.user_id         = params[:user_id]
     if message.save!
-      MessagesChannel.broadcast_to conversation, message
       head :ok
     end
   end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :token_data
   routes_mode = ENV['ROUTES_MODE'].nil? ? 'all' : ENV['ROUTES_MODE']
 
-
+  mount ActionCable.server => '/cable'
   # add API specific routes
   draw :api_v1 if routes_mode =~ /(all|api|admin)/
   # for admin site
