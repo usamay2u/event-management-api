@@ -13,4 +13,4 @@
           .col-2
             = link_to 'Add New Conference', new_admins_conference_path, class: 'btn btn-primary float-right'
       .card-body
-        = render partial: 'conferences_detail'
+        = render partial: 'conferences_detail', locals: {conferences: @conferences}

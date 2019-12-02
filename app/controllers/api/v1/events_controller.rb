@@ -17,22 +17,31 @@ class Api::V1::EventsController < Api::V1::BaseController
     event_array = []
     ongoing_session_array = []
     upcoming_session_array = []
+    sponsors = []
+    speakers = []
+    attendees = []
+    conferences = []
+
     @event.conferences.each do |conference|
-      conference.cover_photo = 'http://167.71.43.55'+rails_blob_path(conference.cover_photo, only_path: true) if conference.cover_photo.attached?
-      ongoing_session_array << conference if DateTime.now.utc.strftime( "%H%M%S%N" ).between?(conference.start_time.utc.strftime( "%H%M%S%N" ), conference.end_time.utc.strftime( "%H%M%S%N" ))
-      upcoming_session_array << conference if DateTime.now.utc.strftime( "%H%M%S%N" ) < conference.start_time.utc.strftime( "%H%M%S%N" )
+      conference.profile_cover = 'https://41651b0a.ngrok.io'+rails_blob_path(conference.cover_photo, only_path: true) if conference.cover_photo.attached?
+      ongoing_session_array << conference if DateTime.now.strftime( "%H%M%S%N" ).between?(conference.start_time.strftime( "%H%M%S%N" ), conference.end_time.strftime( "%H%M%S%N" ))
+      upcoming_session_array << conference if DateTime.now.strftime( "%H%M%S%N" ) < conference.start_time.strftime( "%H%M%S%N" )
+      conferences << conference
     end
 
-    @event.cover_photo = 'http://167.71.43.55'+Rails.application.routes.url_helpers.rails_blob_path(@event.cover_photo, only_path: true) if @event.cover_photo.attached?
-    @user.avatar = 'http://167.71.43.55'+Rails.application.routes.url_helpers.rails_blob_path(@user.avatar, only_path: true) if @user.avatar.attached?
+    @event.profile_cover = 'https://41651b0a.ngrok.io'+Rails.application.routes.url_helpers.rails_blob_path(@event.cover_photo, only_path: true) if @event.cover_photo.attached?
+    @user.profile_avatar = 'https://41651b0a.ngrok.io'+Rails.application.routes.url_helpers.rails_blob_path(@user.avatar, only_path: true) if @user.avatar.attached?
 
     @event.users.find_each do |user|
-      user.avatar = 'http://167.71.43.55'+Rails.application.routes.url_helpers.rails_blob_path(user.avatar, only_path: true) if user.avatar.attached?
+      user.profile_avatar = 'https://41651b0a.ngrok.io'+Rails.application.routes.url_helpers.rails_blob_path(user.avatar, only_path: true) if user.avatar.attached?
+      attendees << user if user.type == 'Attendee'
+      speakers << user if user.type == 'Speaker'
+      sponsors << user if user.type == 'Sponsor'
     end
 
-    event_array << { event: @event, user_type: @user.type, user: @user, sessions: @event.conferences, ongoing_session: ongoing_session_array,
-                     upcoming_session: upcoming_session_array, sponsors: @event.users.sponsors,
-                     speakers: @event.users.speakers, attendees: @event.users.attendees }
+    event_array << { event: @event, user_type: @user.type, user: @user, sessions: conferences, ongoing_session: ongoing_session_array,
+                     upcoming_session: upcoming_session_array, sponsors: sponsors,
+                     speakers: speakers, attendees: attendees }
     event_array
   end
 

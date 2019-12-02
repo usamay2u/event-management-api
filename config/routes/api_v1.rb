@@ -19,6 +19,8 @@ Rails.application.routes.draw do
           post :find_or_create
         end
       end
+
+      resources :users, only: [:update]
       resources :messages, only: [:create]
     end
   end

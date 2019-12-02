@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_212127) do
+ActiveRecord::Schema.define(version: 2019_12_01_225619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,33 @@ ActiveRecord::Schema.define(version: 2019_11_20_212127) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "notification_settings", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.boolean "email_opt_out"
+    t.boolean "text_opt_out"
+    t.boolean "push_opt_out"
+    t.boolean "default_email"
+    t.boolean "default_push"
+    t.boolean "default_text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "heading"
+    t.string "subtitle"
+    t.string "content"
+    t.boolean "is_read", default: false
+    t.string "href"
+    t.datetime "deleted_at"
+    t.json "data", default: {}
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "user_conversations", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "conversation_id"
@@ -135,6 +162,18 @@ ActiveRecord::Schema.define(version: 2019_11_20_212127) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conversation_id"], name: "index_user_conversations_on_conversation_id"
     t.index ["user_id"], name: "index_user_conversations_on_user_id"
+  end
+
+  create_table "user_notification_settings", force: :cascade do |t|
+    t.boolean "email_active"
+    t.boolean "notification_active"
+    t.boolean "text_active"
+    t.bigint "user_id"
+    t.bigint "notification_setting_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["notification_setting_id"], name: "index_user_notification_settings_on_notification_setting_id"
+    t.index ["user_id"], name: "index_user_notification_settings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -149,6 +188,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_212127) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "qr_code"
     t.string "profile_avatar"
+    t.uuid "player_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

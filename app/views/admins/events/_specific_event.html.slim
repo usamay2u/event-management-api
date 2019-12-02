@@ -1,0 +1,25 @@
+.card.mb-3
+  .card-body
+    ul.list-group
+      .row
+        .col-md-6
+          li.list-group-item
+            b.mr-3 Name:
+            = event.name
+          li.list-group-item
+            b.mr-3 Code:
+            = event.code
+          li.list-group-item
+            b.mr-3 Description:
+            = event.description
+        .col-md-6
+          li.list-group-item
+            b.mr-3 Venue:
+            = event.venue
+          li.list-group-item
+            b.mr-3 Start Date:
+            = display_date(event.start_date)
+          li.list-group-item
+            b.mr-3 End Date:
+            = display_date(event.end_date)
+

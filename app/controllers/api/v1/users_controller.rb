@@ -1,6 +1,6 @@
 class Api::V1::UsersController < Api::V1::BaseController
   before_action :set_event_user, only: [:verify_user]
-  before_action :set_user, only: [:log_out, :get_links, :connect_with_other, :get_conferences]
+  before_action :set_user, only: [:log_out, :get_links, :connect_with_other, :get_conferences, :update]
   before_action :set_conference, only: [:get_speakers]
 
   def verify_user
@@ -58,7 +58,19 @@ class Api::V1::UsersController < Api::V1::BaseController
     render json: { speakers: speakers}, status: 200 and return
   end
 
+  def update
+    if @user.update!(user_update_params)
+      render json: { message: 'Success' }, status: 200
+    else
+      render json: { message: 'Error Occurred' }, status: 500
+    end
+  end
+
   private
+
+  def user_update_params
+    params.permit(:player_id)
+  end
 
   def set_event_user
     user  = User.find_by_email(params[:email])

@@ -34,6 +34,8 @@ class Admins::EventsController < ::ApplicationController
   end
 
   def show
+    @users = @event.users
+    @conferences = @event.conferences
   end
 
   def destroy
