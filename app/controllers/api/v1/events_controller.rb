@@ -24,8 +24,8 @@ class Api::V1::EventsController < Api::V1::BaseController
 
     @event.conferences.each do |conference|
       conference.profile_cover = 'http://167.71.43.55'+rails_blob_path(conference.cover_photo, only_path: true) if conference.cover_photo.attached?
-      ongoing_session_array << conference if DateTime.now.strftime( "%H%M%S%N" ).between?(conference.start_time.strftime( "%H%M%S%N" ), conference.end_time.strftime( "%H%M%S%N" ))
-      upcoming_session_array << conference if DateTime.now.strftime( "%H%M%S%N" ) < conference.start_time.strftime( "%H%M%S%N" )
+      ongoing_session_array << conference if DateTime.now.strftime( "%H%M%S%N" ).between?(conference.start_time.strftime( "%H%M%S%N" ), conference.end_time.strftime( "%H%M%S%N" )) && DateTime.now.to_date.between?(@event.start_date, @event.end_date)
+      upcoming_session_array << conference if DateTime.now.strftime( "%H%M%S%N" ) < conference.start_time.strftime( "%H%M%S%N" ) && DateTime.now.to_date.between?(@event.start_date, @event.end_date)
       conferences << conference
     end
 
