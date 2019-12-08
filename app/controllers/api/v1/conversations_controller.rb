@@ -45,7 +45,7 @@ class Api::V1::ConversationsController < Api::V1::BaseController
     conversations = @current_user.conversations
     conversations.find_each do |conversation|
       user = conversation.user_conversations.where("user_conversations.user_id != ?", @current_user.id).first.user
-      user.profile_avatar = 'http://167.71.43.55'+Rails.application.routes.url_helpers.rails_blob_path(user.avatar, only_path: true) if user.avatar.attached?
+      user.profile_avatar = 'http://102aa138.ngrok.io'+Rails.application.routes.url_helpers.rails_blob_path(user.avatar, only_path: true) if user.avatar.attached?
       conversation_array << { conversation: conversation, message: conversation.messages.last, user: user }
     end
     render json: {conversations: conversation_array, message: 'Success' }, status: 200 and return

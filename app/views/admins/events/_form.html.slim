@@ -28,6 +28,39 @@
       = f.label :end_date
       = f.date_field :end_date, autofocus: true, placeholder: "End Date", required: true,
                    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.row
+  .col-md-6
+    .form-group
+      = f.label :lat
+      = f.number_field :lat, autofocus: true, placeholder:  "Latitude", required: true, step: :any,
+                    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+  .col-md-6
+    .form-group
+      = f.label :lng
+      = f.number_field :lng, autofocus: true, placeholder: "Longitude", required: true, step: :any,
+                   class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.row
+  .col-md-6
+    .form-group
+      = f.label :facebook
+      = f.text_field :facebook, autofocus: true, placeholder:  "Facebook Link", required: false,
+                    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+  .col-md-6
+    .form-group
+      = f.label :youtube
+      = f.text_field :youtube, autofocus: true, placeholder: "Youtube Link", required: false,
+                   class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+.row
+  .col-md-6
+    .form-group
+      = f.label :twitter
+      = f.text_field :twitter, autofocus: true, placeholder:  "Twitter Link", required: false,
+                    class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
+  .col-md-6
+    .form-group
+      = f.label :linked_in
+      = f.text_field :linked_in, autofocus: true, placeholder: "LinkedIn Link", required: false,
+                   class: 'form-control border-t-0 border-r-0 border-l-0 rounded-0 pl-0'
 .form-group.pt-2
   = f.label :cover_photo
   = f.file_field :cover_photo, class: 'pl-3'
