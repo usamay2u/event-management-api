@@ -1,10 +1,11 @@
 class Twilio::Base
-  def send_message
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_AUTH_TOKEN']
 
-    @client = Twilio::REST::Client.new(account_sid, auth_token)
+  def initialize
+    @client =  Twilio::REST::Client.new('AC676b8529e32eb0c3676a7b54e66a2c36', 'e5774509e057c2f1f536ae3773d298d6')
+  end
 
-    message = @client.messages.create( from: '+19782613144', body: 'Do. Or do not. There is no try.', to: '+923004654672')
+  def send_message phone_number, token
+    body = "Your verification code for convergent app is #{token}"
+    message = @client.messages.create( from: '+19782613144', body: body, to: phone_number)
   end
 end
