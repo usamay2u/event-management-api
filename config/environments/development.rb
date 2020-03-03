@@ -14,7 +14,7 @@ Rails.application.configure do
   config.hosts = nil
 
   config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
-  config.action_cable.url = 'ws://a1c2aa44.ngrok.io/api/v1/cable'
+  config.action_cable.url = 'ws://167.71.43.55/cable'
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
