@@ -22,7 +22,7 @@ gem 'devise', '~>4.7.1'
 gem 'sidekiq', '~> 5.2.3'
 gem 'active_storage_validations'
 gem 'bootstrap-form'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem "nested_form"
 gem 'redis', '~> 4.0'
 gem 'rack-cors'
