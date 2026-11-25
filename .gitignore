@@ -27,7 +27,6 @@ config/application.yml
 
 # dotenv
 # TODO Comment out this rule if environment variables can be committed
-.env
 
 ## Environment normalization:
 /.bundle
@@ -71,3 +70,4 @@ app/.DS_Store
 app/assets/.DS_Store
 app/assets/images/.DS_Store
 app/.DS_Store
+config.bat
